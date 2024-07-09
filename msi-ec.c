@@ -3344,7 +3344,7 @@ static int curve_fan_mode_change(const char *mode) {
 		for (int i = 0; i < ALL_CURVES_COUNT; i++) {
 			struct curve_pack curve_data = *all_curves_list[i];
 
-			if (conf.cpu.fan_curve.apply_strategy == CURVE_APPLY_STRATEGY_RESET_ON_AUTO &&
+			if (curve_data.curve->apply_strategy == CURVE_APPLY_STRATEGY_RESET_ON_AUTO &&
 				is_curve_allowed(*curve_data.curve)) {
 
 				int status = push_ec_curve(*curve_data.curve, 
@@ -3360,7 +3360,7 @@ static int curve_fan_mode_change(const char *mode) {
 		for (int i = 0; i < ALL_CURVES_COUNT; i++) {
 			struct curve_pack curve_data = *all_curves_list[i];
 
-			if (conf.cpu.fan_curve.apply_strategy == CURVE_APPLY_STRATEGY_RESET_ON_AUTO &&
+			if (curve_data.curve->apply_strategy == CURVE_APPLY_STRATEGY_RESET_ON_AUTO &&
 				is_curve_allowed(*curve_data.curve)) {
 
 				sync_ec_curve_safe(*curve_data.curve, curve_data.curve_fan_speed, curve_data.curve_temp);
